@@ -26,3 +26,27 @@ class Solution(object):
         result = []
         dfs([], cols, main_diag, anti_diag, result)
         return result
+"""
+Shiity one
+"""
+class Solution(object):
+    def solveNQueens(self, n):
+        """
+        :type n: int
+        :rtype: List[List[str]]
+        """
+        res = []
+        possible_combo = []
+        col = list(range(n))
+        for combo in itertools.permutations(col):
+            if(n == len(list(set(combo[i] + i for i in range(n)))) == 
+                                len(list(set(combo[i] - i for i in range(n))))):
+                # possible_combo.append(combo)
+                one_res = []
+                for pos in combo:
+                    init = ['.'] * n
+                    init[pos] = 'Q'
+                    one_res.append(''.join(init))
+                res.append(one_res)
+        return res
+            
